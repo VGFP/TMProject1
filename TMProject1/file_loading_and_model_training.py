@@ -8,7 +8,7 @@ def unload_data():
     for name in filename_list:
         file_with_mfcc=open(name,"r")
         y=name.split("_")
-        print(y[1])
+        #print(y[1])
         y=int(y[2])
         mfcc_string=file_with_mfcc.read()    
         mfcc_string_list=mfcc_string.split("]")    
@@ -31,5 +31,6 @@ def unload_data():
         file_with_mfcc.close()
         loaded_files[y].append(list_of_all_lists)   
     return loaded_files
+
         
 
