@@ -45,7 +45,27 @@ def load_mfcc_from_pickle():
     return samples_dict
 
 #mfcc_to_pickle()
-
 main_dict=load_mfcc_from_pickle()
+#print(np.shape(main_dict[1]))
 
-print(np.shape(main_dict[1]))
+def get_test_and_train_data(group_nr,dict):
+    pass
+
+#keras model :)
+from keras.models import Sequential
+from keras.layers import Dense, Activation
+from keras.optimizers import Adam
+
+NB_OUTPUTS=10
+NB_EPOCH = 20
+BATCH_SIZE = 32
+OPTIMIZER = Adam() # optimizer
+#N_HIDDEN = 128
+
+model=Sequential()
+#add input layer with 13 neuron an 13 inputs with randomised weights at start with range from -0.05 to 0,05
+model.add(Dense(13, input_shape=(13,), kernel_initializer='random_uniform'))
+model.add(Activation('relu'))
+model.add(Dense(NB_CLASSES))
+model.add(Activation('softmax'))
+model.summary()
