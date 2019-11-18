@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>44fcf5a6-a454-4b65-b6e1-513eb0fdda29</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>file_loading_and_model_training.py</StartupFile>
+    <StartupFile>MFCC_v2.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -25,6 +25,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="MFCC.py" />
+    <Compile Include="MFCC_v2.py" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
