@@ -48,9 +48,6 @@ def load_mfcc_from_pickle():
 main_dict=load_mfcc_from_pickle()
 #print(np.shape(main_dict[1]))
 
-def get_test_and_train_data(group_nr,dict):
-    pass
-
 #keras model :)
 from keras.models import Sequential
 from keras.layers import Dense, Activation
@@ -69,3 +66,30 @@ model.add(Activation('relu'))
 model.add(Dense(NB_CLASSES))
 model.add(Activation('softmax'))
 model.summary()
+#compiling model so it can be executed by Tensorflow backend
+#We use Adam optimiser and categorical_crossentropy as an objective function
+model.compile(loss='categorical_crossentropy', optimizer=OPTIMIZER, metrics=['accuracy'])
+
+def split_speakers(dictionary, number):
+    test_dict={0: [], 1: [], 2: [], 3: [], 4: [], 5: [], 6: [], 7: [], 8: [], 9: []}
+    fit_dict={0: [], 1: [], 2: [], 3: [], 4: [], 5: [], 6: [], 7: [], 8: [], 9: []}
+
+    for x in range(10):
+        test_dict[x]=dictionary[x][4*number:4*number+4]
+        fit_dict[x]=dictionary[x]
+        del fit_dict[x][4*number:4*number+4]
+
+    return fit_dict, test_dict
+
+
+for test_group in range(5):
+    fit_d,test_d=split_speakers(main_dict,test_group)
+    for fit_number in range(10):
+        model.fit(fit_d[fit_number],fit_number)
+    for fit_number in range(10):
+        score = model.evaluate(test_d[fit_number], fit_number, verbose=1)
+        print("\n")
+        print("Test group: "+str(test_group)+" number: "+str(fit_number) )
+        print("Test score:", score[0])
+        print('Test accuracy:', score[1])
+        print("\n")
