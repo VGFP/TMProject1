@@ -112,8 +112,8 @@ for test_group in range(5):
                 YTRAIN.append(y)
     XTRAIN=np.array(XTRAIN)
     YTRAIN=np.array(YTRAIN)
-    #print(np.shape(XTRAIN))
-    #print(np.shape(YTRAIN))
+    print(np.shape(XTRAIN))
+    print(np.shape(YTRAIN))
     for fit_number in range(10):
         accuracy_total = np.zeros((4,10)) # dla calosci
         for speakers in range(4):
@@ -129,8 +129,8 @@ for test_group in range(5):
                 YTEST.append(y)
     XTEST=np.array(XTEST)
     YTEST=np.array(YTEST)
-    #print(np.shape(XTEST))
-    #print(np.shape(YTEST))
+    print(np.shape(XTEST))
+    print(np.shape(YTEST))
     model.fit(XTRAIN,YTRAIN,verbose=0)
     score = model.evaluate(XTEST, YTEST, verbose=0)
     print("Test score:", score[0])
